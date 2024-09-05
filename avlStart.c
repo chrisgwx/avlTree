@@ -111,6 +111,30 @@ void inOrder(AVLNode* root) {
     }
 }
 
+void preOrder(AVLNode* root) {
+    if (root != NULL) {
+        printf("%d ", root->key);  
+        preOrder(root->left);      
+        preOrder(root->right);     
+    }
+}
+
+void postOrder(AVLNode* root) {
+    if (root != NULL) {
+        postOrder(root->left);     
+        postOrder(root->right);    
+        printf("%d ", root->key);  
+    }
+}
+
+void freeTree(AVLNode* root) {
+    if (root != NULL) {
+        freeTree(root->left);
+        freeTree(root->right);
+        free(root);
+    }
+}
+
 int main() {
     AVLNode* root = NULL;
 
@@ -123,6 +147,6 @@ int main() {
     printf("AVL TREE: ");
     inOrder(root);
     printf("\n");
-
+    freeTree(root);
     return 0;
 }
